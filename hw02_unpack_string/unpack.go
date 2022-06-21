@@ -63,6 +63,12 @@ func buildUnpacked(
 		repeatedChar := strings.Repeat(string(previousState.char), count)
 		stringBuilder.WriteString(repeatedChar)
 		return UnpackState{runeType: Empty}, nil
+	case Letter:
+		fallthrough
+	case BackSlash:
+		fallthrough
+	case Empty:
+		fallthrough
 	default:
 		if previousState.runeType != Empty {
 			stringBuilder.WriteRune(previousState.char)
